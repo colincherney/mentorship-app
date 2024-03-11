@@ -35,6 +35,8 @@ app.use(
 // Serve static files
 app.use(express.static("public"));
 
+// Add all routes here
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
