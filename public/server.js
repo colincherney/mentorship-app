@@ -35,7 +35,43 @@ app.use(
 // Serve static files
 app.use(express.static("public"));
 
-// Add all routes here
+// Login route
+app.post("/login", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    const { email, password } = req.body;
+    const sql = `SELECT user_id FROM USERS_2 WHERE email = ? AND password = ?`;
+
+    db.query(sql, [email, password], (err, result) => {
+      if (err) {
+        console.error("Error executing query:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+
+      if (result.length > 0) {
+        const user_id = result[0].user_id;
+        req.session.user_id = user_id; // Store user_id in session
+        res.redirect(`homepage.html`);
+      } else {
+        res.sendFile(path.join(__dirname, "login_error.html"));
+      }
+
+      db.end((err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("MySQL Connection Closed...");
+      });
+    });
+  });
+});
 
 // Start server
 const port = process.env.PORT || 3000;
