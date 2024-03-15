@@ -58,9 +58,9 @@ app.post("/login", (req, res) => {
       if (result.length > 0) {
         const user_id = result[0].user_id;
         req.session.user_id = user_id; // Store user_id in session
-        res.redirect(`homepage.html`);
+        res.redirect(`html-pages/homepage.html`);
       } else {
-        res.sendFile(path.join(__dirname, "login_error.html"));
+        res.sendFile(path.join(__dirname, "html-pages/login_error.html"));
       }
 
       db.end((err) => {
