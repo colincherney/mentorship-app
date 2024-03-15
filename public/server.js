@@ -73,6 +73,45 @@ app.post("/login", (req, res) => {
   });
 });
 
+// Signup route
+app.post("/signup", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    const { first_name, last_name, email, password, phone, job_title } =
+      req.body;
+
+    // Insert the form data into MySQL database
+    const sql =
+      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title) VALUES (?, ?, ?, ?, ?, ?)";
+    db.query(
+      sql,
+      [first_name, last_name, email, password, phone, job_title],
+      (err, result) => {
+        if (err) {
+          console.error("Error inserting data:", err);
+          res.status(500).send("Error occurred while signing up");
+          return;
+        }
+        console.log("Data inserted successfully");
+        res.redirect(`../index.html`);
+
+        db.end((err) => {
+          if (err) {
+            throw err;
+          }
+          console.log("MySQL Connection Closed...");
+        });
+      }
+    );
+  });
+});
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
