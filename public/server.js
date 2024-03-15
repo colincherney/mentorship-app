@@ -112,6 +112,60 @@ app.post("/signup", (req, res) => {
   });
 });
 
+// User Data Route
+app.get("/user-data", (req, res) => {
+  const user_id = req.session.user_id; // Retrieve user_id from session
+
+  if (!user_id) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
+
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("MySQL Connected...");
+
+    db.query(
+      "SELECT * FROM USERS_2 WHERE user_id = ?",
+      [user_id],
+      (error, results) => {
+        if (error) {
+          console.error("Error fetching data:", error);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        res.json(results);
+      }
+    );
+
+    db.end((err) => {
+      if (err) {
+        console.error("Error closing MySQL connection:", err);
+        return;
+      }
+      console.log("MySQL Connection Closed...");
+    });
+  });
+});
+
+// Logout route
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.redirect("index.html"); // Redirect to the login page
+  });
+});
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
