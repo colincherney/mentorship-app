@@ -166,6 +166,51 @@ app.get("/logout", (req, res) => {
   });
 });
 
+// Delete account route
+app.post("/delete_account", (req, res) => {
+  const user_id = req.session.user_id; // Retrieve user_id from session
+
+  if (!user_id) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
+
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("MySQL Connected...");
+
+    db.query(
+      "DELETE FROM USERS_2 WHERE user_id = ?",
+      [user_id],
+      (error, result) => {
+        if (error) {
+          console.error("Error deleting user:", error);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        console.log("User deleted successfully");
+        req.session.destroy(); // Destroy the session
+
+        res.redirect("/index.html"); // Redirect to the index page
+
+        db.end((err) => {
+          if (err) {
+            console.error("Error closing MySQL connection:", err);
+            return;
+          }
+          console.log("MySQL Connection Closed...");
+        });
+      }
+    );
+  });
+});
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
