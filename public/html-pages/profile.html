@@ -62,6 +62,14 @@
         position: absolute;
         bottom: 0;
       }
+      #edit {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-left: 50px;
+      }
     </style>
   </head>
   <body>
@@ -85,14 +93,15 @@
           <p id="location"></p>
           <p id="job"></p>
         </div>
+        <button id="edit"><a href="edit_profile.html">Edit Profile</a></button>
       </div>
       <h3>About Me</h3>
       <p id="about"></p>
 
       <button id="delete-button">Delete Account</button>
     </div>
-    <script src="../scripts/profile.js"></script>
-    <script src="../scripts/logout.js"></script>
-    <script src="../scripts/delete_account.js"></script>
+    <script src="scripts/profile.js"></script>
+    <script src="scripts/logout.js"></script>
+    <script src="scripts/delete_account.js"></script>
   </body>
 </html>

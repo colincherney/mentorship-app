@@ -33,7 +33,7 @@ app.use(
 );
 
 // Serve static files
-app.use(express.static("public"));
+app.use(express.static("public/html-pages"));
 
 // Login route
 app.post("/login", (req, res) => {
@@ -58,9 +58,9 @@ app.post("/login", (req, res) => {
       if (result.length > 0) {
         const user_id = result[0].user_id;
         req.session.user_id = user_id; // Store user_id in session
-        res.redirect(`html-pages/homepage.html`);
+        res.redirect(`homepage.html`);
       } else {
-        res.sendFile(path.join(__dirname, "html-pages/login_error.html"));
+        res.redirect(`login_error.html`);
       }
 
       db.end((err) => {
@@ -99,7 +99,7 @@ app.post("/signup", (req, res) => {
           return;
         }
         console.log("Data inserted successfully");
-        res.redirect(`../index.html`);
+        res.redirect(`index.html`);
 
         db.end((err) => {
           if (err) {
@@ -203,6 +203,56 @@ app.post("/delete_account", (req, res) => {
           if (err) {
             console.error("Error closing MySQL connection:", err);
             return;
+          }
+          console.log("MySQL Connection Closed...");
+        });
+      }
+    );
+  });
+});
+
+// Update User Data Route
+app.post("/update-data", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    const user_id = req.session.user_id; // Retrieve user_id from session
+
+    const { first_name, last_name, email, phone, job_title, location, about } =
+      req.body;
+
+    // Insert the form data into MySQL database
+    const sql =
+      "UPDATE USERS_2 SET first_name = ?, last_name = ?, email = ?, phone = ?, job_title = ?, location = ?, about = ? WHERE user_id = ?";
+    db.query(
+      sql,
+      [
+        first_name,
+        last_name,
+        email,
+        phone,
+        job_title,
+        location,
+        about,
+        user_id,
+      ],
+      (err, result) => {
+        if (err) {
+          console.error("Error updating data:", err);
+          res.status(500).send("Error occurred while updating data");
+          return;
+        }
+        console.log("Data updated successfully");
+        res.redirect(`profile.html`);
+
+        db.end((err) => {
+          if (err) {
+            throw err;
           }
           console.log("MySQL Connection Closed...");
         });
