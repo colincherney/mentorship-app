@@ -244,11 +244,11 @@ app.post("/update-data", (req, res) => {
       (err, result) => {
         if (err) {
           console.error("Error updating data:", err);
-          res.status(500).send("Error occurred while updating data");
+          res.status(500).json({ error: "Error occurred while updating data" });
           return;
         }
         console.log("Data updated successfully");
-        res.redirect(`profile.html`);
+        res.redirect("/profile.html"); // Redirect to profile.html
 
         db.end((err) => {
           if (err) {
