@@ -15,7 +15,7 @@ fetch(`/user-data`, {
     document.getElementById("last_name").value = data[0].last_name;
     document.getElementById("email").value = data[0].email;
     document.getElementById("phone").value = data[0].phone;
-    document.getElementById("job").value = data[0].job_title;
+    document.getElementById("job_title").value = data[0].job_title;
     document.getElementById("location").value = data[0].location;
     document.getElementById("about").value = data[0].about;
   })
@@ -36,7 +36,7 @@ document.getElementById("save").addEventListener("click", (event) => {
       last_name: document.getElementById("last_name").value,
       email: document.getElementById("email").value,
       phone: document.getElementById("phone").value,
-      job_title: document.getElementById("job").value,
+      job_title: document.getElementById("job_title").value,
       location: document.getElementById("location").value,
       about: document.getElementById("about").value,
     }),
