@@ -83,15 +83,22 @@ app.post("/signup", (req, res) => {
     }
     console.log("MySQL Connected...");
 
-    const { first_name, last_name, email, password, phone, job_title } =
-      req.body;
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      job_title,
+      location,
+    } = req.body;
 
     // Insert the form data into MySQL database
     const sql =
-      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title) VALUES (?, ?, ?, ?, ?, ?)";
+      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title, location) VALUES (?, ?, ?, ?, ?, ?, ?)";
     db.query(
       sql,
-      [first_name, last_name, email, password, phone, job_title],
+      [first_name, last_name, email, password, phone, job_title, location],
       (err, result) => {
         if (err) {
           console.error("Error inserting data:", err);
