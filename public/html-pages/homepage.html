@@ -1,73 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MentorMe</title>
-  </head>
-  <body>
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Mentorship App Dashboard</title>
-        <style>
-          body {
+    <style>
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             border: 20px solid #333;
-          }
-          #sidebar {
+        }
+        #sidebar {
             background-color: #333;
             color: white;
             width: 250px;
-            height: 100vh;
-          }
-          #content {
+            height: 200vh;
+        }
+        #content {
             flex: 1;
             padding: 20px;
-          }
-          ul {
+        }
+        ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-          }
-          ul li {
+        }
+        ul li {
             padding: 10px 0;
             border-bottom: 1px solid #555;
-          }
-          ul li:last-child {
+        }
+        ul li:last-child {
             border-bottom: none;
-          }
-          a {
+        }
+        a {
             color: white;
             text-decoration: none;
-          }
-          a:hover {
+        }
+        a:hover {
             text-decoration: underline;
-          }
-        </style>
-      </head>
-      <body>
-        <div id="sidebar">
-          <h2>MentorMe</h2>
-          <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Mentors</a></li>
-            <li><a href="#">Mentees</a></li>
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .about {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .testimonial p {
+            font-style: italic;
+            color: #333;
+        }
+        .testimonial-author {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        img {
+            height: 400px; /* Added */
+            margin-top: 10px; /* Added */
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>MentorMe</h2>
+        <ul>
+            <li><a href="./homepage.html">Dashboard</a></li>
+            <li><a href="./mentors.html">Mentors</a></li>
+            <li><a href="./mentees.html">Mentees</a></li>
             <li><a href="#">Messages</a></li>
             <li><a href="profile.html">Profile</a></li>
             <li id="logout"><a href="#">Logout</a></li>
-          </ul>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Welcome to MentorMe</h1>
+        <p>Connecting mentors and mentees for professional growth</p>
+        <img src="mentorme.png" alt="Mentor 2">
+        <div class="about">
+            <h2>About MentorMe</h2>
+            <p>
+                MentorMe is a platform dedicated to fostering mentorship connections between individuals from diverse backgrounds and expertise. Whether you're a seasoned professional looking to share your knowledge or a newcomer seeking guidance, MentorMe provides a supportive environment for mentorship to thrive.
+            </p>
+            <p>
+                Our platform utilizes advanced algorithms to match mentors and mentees based on shared interests, skills, and career goals. We offer tools for scheduling meetings, tracking progress, and maintaining communication throughout the mentorship journey.
+            </p>
+            <p>
+                Join MentorMe today and take the next step in your professional development journey!
+            </p>
+            <a href="mentors.html" class="btn">Get Started</a>
+
         </div>
-        <div id="content">
-          <h1 id="welcome"></h1>
-          <p>This is where you can manage your mentorship activities.</p>
+        <div class="testimonial">
+            <p>"MentorMe helped me find a mentor who provided invaluable guidance in my career transition. Highly recommended!"</p>
+            <div class="testimonial-author">- Will Martin</div>
         </div>
-      </body>
-    </html>
+        <div class="testimonial">
+            <p>"As a mentor on MentorMe, I've had the privilege of helping mentees achieve their goals and grow professionally. It's been a rewarding experience."</p>
+            <div class="testimonial-author">- Maddy Knutton</div>
+        </div>
+    </div>
     <script src="scripts/dashboard.js"></script>
-    <script src="scripts/logout.js"></script>
-  </body>
-</html>
+    <script src="scripts/logout.js"></script
