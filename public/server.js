@@ -46,7 +46,7 @@ app.post("/login", (req, res) => {
     console.log("MySQL Connected...");
 
     const { email, password } = req.body;
-    const sql = `SELECT user_id FROM USERS_2 WHERE email = ? AND password = ?`;
+    const sql = `SELECT user_id, mentor_mentee FROM USERS_2 WHERE email = ? AND password = ?`;
 
     db.query(sql, [email, password], (err, result) => {
       if (err) {
@@ -57,7 +57,9 @@ app.post("/login", (req, res) => {
 
       if (result.length > 0) {
         const user_id = result[0].user_id;
+        const mentor_status = result[0].mentor_mentee
         req.session.user_id = user_id; // Store user_id in session
+        req.session.mentor_status = mentor_status // Store wheter mentor or mentee
         res.redirect(`homepage.html`);
       } else {
         res.redirect(`login_error.html`);
