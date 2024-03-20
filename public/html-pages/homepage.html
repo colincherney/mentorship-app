@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,49 +11,60 @@
             margin: 0;
             padding: 0;
             display: flex;
-            border: 20px solid #333;
+            border: 20px solid #000;
         }
+
         #sidebar {
-            background-color: #333;
+            background-color: #000;
             color: white;
             width: 250px;
             height: 200vh;
         }
+
         #content {
             flex: 1;
             padding: 20px;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
+
         ul li {
             padding: 10px 0;
             border-bottom: 1px solid #555;
         }
+
         ul li:last-child {
             border-bottom: none;
         }
+
         a {
             color: white;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
+
         h1 {
             color: #333;
         }
+
         p {
             color: #666;
         }
+
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -62,15 +74,18 @@
             border-radius: 5px;
             margin-top: 20px;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
+
         .about {
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
         }
+
         .testimonial {
             background-color: #f9f9f9;
             padding: 20px;
@@ -78,10 +93,12 @@
             margin-top: 20px;
             text-align: left;
         }
+
         .testimonial p {
             font-style: italic;
             color: #333;
         }
+
         .testimonial-author {
             margin-top: 10px;
             font-weight: bold;
@@ -89,11 +106,12 @@
         }
 
         img {
-            height: 400px; 
-            margin-top: 10px; 
+            height: 400px;
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
     <div id="sidebar">
         <h2>MentorMe</h2>
@@ -113,23 +131,33 @@
         <div class="about">
             <h2>About MentorMe</h2>
             <p>
-                MentorMe is a platform dedicated to fostering mentorship connections between individuals from diverse backgrounds and expertise. Whether you're a seasoned professional looking to share your knowledge or a newcomer seeking guidance, MentorMe provides a supportive environment for mentorship to thrive.
+                MentorMe is a platform dedicated to fostering mentorship connections between individuals from diverse
+                backgrounds and expertise. Whether you're a seasoned professional looking to share your knowledge or a
+                newcomer seeking guidance, MentorMe provides a supportive environment for mentorship to thrive.
             </p>
             <p>
-                At MentorMe, we understand that mentorship is not just about sharing knowledge; it's about building relationships, gaining insights, and unlocking potential. That's why we've developed a <b>comprehensive 12-week course</b> designed to provide structured guidance and support. Each week, participants engage in interactive modules, hands-on exercises, and one-on-one sessions with their mentors, tailored to their unique needs and aspirations.
+                At MentorMe, we understand that mentorship is not just about sharing knowledge; it's about building
+                relationships, gaining insights, and unlocking potential. That's why we've developed a <b>comprehensive
+                    12-week course</b> designed to provide structured guidance and support. Each week, participants
+                engage in interactive modules, hands-on exercises, and one-on-one sessions with their mentors, tailored
+                to their unique needs and aspirations.
             </p>
             <p>
-                Whether you're a seasoned professional eager to share your expertise or a newcomer hungry for guidance, MentorMe provides the support and resources you need to succeed. Join us and take the next step in your professional development journey!
+                Whether you're a seasoned professional eager to share your expertise or a newcomer hungry for guidance,
+                MentorMe provides the support and resources you need to succeed. Join us and take the next step in your
+                professional development journey!
             </p>
             <a href="mentors.html" class="btn">Get Started</a>
 
         </div>
         <div class="testimonial">
-            <p>"MentorMe helped me find a mentor who provided invaluable guidance in my career transition. Their 12 week plan helped me so much!"</p>
+            <p>"MentorMe helped me find a mentor who provided invaluable guidance in my career transition. Their 12 week
+                plan helped me so much!"</p>
             <div class="testimonial-author">- Will Martin</div>
         </div>
         <div class="testimonial">
-            <p>"As a mentor on MentorMe, I've had the privilege of helping mentees achieve their goals and grow professionally. It's been a rewarding experience."</p>
+            <p>"As a mentor on MentorMe, I've had the privilege of helping mentees achieve their goals and grow
+                professionally. It's been a rewarding experience."</p>
             <div class="testimonial-author">- Maddy Knutton</div>
         </div>
     </div>
