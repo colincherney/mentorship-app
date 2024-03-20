@@ -1,73 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MentorMe</title>
+</head>
+
+<body>
+  <!DOCTYPE html>
+  <html>
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MentorMe</title>
+    <title>Mentorship App Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        border: 20px solid #333;
+      }
+
+      #sidebar {
+        background-color: #333;
+        color: white;
+        width: 250px;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      #content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #555;
+      }
+
+      ul li:last-child {
+        border-bottom: none;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
+
   <body>
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Mentorship App Dashboard</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            border: 20px solid #333;
-          }
-          #sidebar {
-            background-color: #333;
-            color: white;
-            width: 250px;
-            height: 100vh;
-          }
-          #content {
-            flex: 1;
-            padding: 20px;
-          }
-          ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-          }
-          ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #555;
-          }
-          ul li:last-child {
-            border-bottom: none;
-          }
-          a {
-            color: white;
-            text-decoration: none;
-          }
-          a:hover {
-            text-decoration: underline;
-          }
-        </style>
-      </head>
-      <body>
-        <div id="sidebar">
-          <h2>MentorMe</h2>
-          <ul>
-            <li><a href="./homepage.html">Dashboard</a></li>
-            <li><a href="./mentors.html">Mentors</a></li>
-            <li><a href="./mentees.html">Mentees</a></li>
-            <li><a href="./messaging.html">Messaging</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li id="logout"><a href="#">Logout</a></li>
-          </ul>
-        </div>
-        <div id="content">
-          <h1 id="welcome"></h1>
-          <p>This is where you can manage your mentees stuff.</p>
-        </div>
-      </body>
-    </html>
-    <script src="scripts/dashboard.js"></script>
-    <script src="scripts/logout.js"></script>
+    <div id="sidebar">
+      <h2>MentorMe</h2>
+      <ul>
+        <li><a href="./homepage.html">Dashboard</a></li>
+        <li><a href="./mentors.html">Mentors</a></li>
+        <li><a href="./mentees.html">Mentees</a></li>
+        <li><a href="./messaging.html">Messaging</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li id="logout"><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <h1 id="welcome"></h1>
+      <p>This is where you can manage your mentees stuff.</p>
+    </div>
   </body>
+
+  </html>
+  <script src="scripts/dashboard.js"></script>
+  <script src="scripts/logout.js"></script>
+</body>
+
 </html>
