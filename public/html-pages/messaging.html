@@ -1,119 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MentorMe - Mentors</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Messaging</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        border: 20px solid #333;
-      }
-      #sidebar {
-        background-color: #333;
-        color: white;
-        width: 250px;
-        height: 100vh;
-      }
-      #content {
-        flex: 1;
-        padding: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid #555;
-      }
-      ul li:last-child {
-        border-bottom: none;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .mentor-profile {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-      }
-      .mentor-profile img {
-        max-width: 100px;
-        border-radius: 50%;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            border: 20px solid #333;
+        }
+
+        #sidebar {
+            background-color: #333;
+            color: white;
+            width: 250px;
+            height: 100vh;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #555;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
         .mentor-profile {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
             margin-bottom: 20px;
         }
+
         .mentor-profile img {
             max-width: 100px;
             border-radius: 50%;
         }
-        .request-button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
+
+        #messaging-container {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            padding: 20px;
         }
-        .request-button:hover {
-            background-color: #45a049;
+
+        #messageForm label {
+            display: block;
+            margin-bottom: 5px;
         }
-      
+
+        #messageForm input[type="email"],
+        #messageForm input[type="text"],
+        #messageForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #messageForm button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #messageForm button:hover {
+            background-color: #0056b3;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div id="sidebar">
-      <h2>MentorMe</h2>
-      <ul>
-        <li><a href="./homepage.html">Dashboard</a></li>
-        <li><a href="./mentors.html">Mentors</a></li>
-        <li><a href="./mentees.html">Mentees</a></li>
-        <li><a href="./messaging.html">Messaging</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li id="logout"><a href="#">Logout</a></li>
-      </ul>
-
+        <h2>MentorMe</h2>
+        <ul>
+            <li><a href="./homepage.html">Dashboard</a></li>
+            <li><a href="./mentors.html">Mentors</a></li>
+            <li><a href="./mentees.html">Mentees</a></li>
+            <li><a href="./messaging.html">Messaging</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li id="logout"><a href="#">Logout</a></li>
+        </ul>
     </div>
-    <div>
-<h2>Contact us</h2>
+    <div id="content">
+        <h1>Messaging Page</h1>
+        <p>Welcome to the messaging platform where mentors and mentees can communicate with each other. Simply fill out the form below to send a message to your mentor/mentee.</p>
+        <div id="messaging-container">
+            <form id="messageForm">
+                <label for="sendEmail">Mentee / Mentor Email:</label>
+                <input type="email" id="sendEmail" name="sendEmail" required>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
 
-<form action="send_email.php" method="post">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required>
-    <br>
-   
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-   
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-    <br>
-   
-    <input type="submit" value="Send">
-  </form>
-  
-  </body>
-  </html>
-</div>
+        <script>
+            document.getElementById("messageForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const sendEmail = document.getElementById("sendEmail").value;
+                const subject = document.getElementById("subject").value;
+                const message = document.getElementById("message").value;
+                sendMessage(sendEmail, subject, message);
+            });
+
+            function sendMessage(sendEmail, subject, message) {
+
+                fetch("/send-message", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ sendEmail, subject, message })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Message sent successfully!");
+                    } else {
+                        alert("Failed to send message.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Failed to send message.");
+                });
+            }
+        </script>
+    </div>
 </body>
 </html>
