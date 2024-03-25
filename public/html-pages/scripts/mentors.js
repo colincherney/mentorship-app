@@ -22,21 +22,29 @@ fetch(`/mentors`, {
         mentorProfile.appendChild(mentorName);
 
         const jobTitle = document.createElement('p');
-        jobTitle.textContent = mentor.job_title;
+        jobTitle.textContent = 'Job title: ' + mentor.job_title;
         mentorProfile.appendChild(jobTitle);
 
+        const location = document.createElement('p');
+        location.textContent = 'Location: ' + mentor.location;
+        mentorProfile.appendChild(location);
+
         const about = document.createElement('p');
-        about.textContent = mentor.about;
+        about.textContent = 'About: ' + mentor.about;
         mentorProfile.appendChild(about);
 
         const contactLink = document.createElement('a');
-        contactLink.textContent = 'Contact Mentor';
+        contactLink.textContent = mentor.email;
         contactLink.href = `mailto:${mentor.email}`;
         mentorProfile.appendChild(contactLink);
+        const paragraph = document.createElement('p');
+        contactLink.style.color = 'blue';
+        paragraph.appendChild(contactLink);
+        mentorProfile.appendChild(paragraph);
 
         const requestButton = document.createElement('button');
         requestButton.classList.add('request-button');
-        requestButton.textContent = 'Request';
+        requestButton.textContent = 'Request Mentor';
         mentorProfile.appendChild(requestButton);
 
         mentorContainer.appendChild(mentorProfile);
