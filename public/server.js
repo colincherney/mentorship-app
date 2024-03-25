@@ -271,6 +271,50 @@ app.post("/update-data", (req, res) => {
   });
 });
 
+// Mentor page
+app.get("/mentors", (req, res) => {
+  const user_id = req.session.user_id; // Retrieve user_id from session
+
+  if (!user_id) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
+
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("MySQL Connected...");
+
+    db.query(
+      "SELECT * FROM P2_MENTOR",
+      [user_id],
+      (error, results) => {
+        if (error) {
+          console.error("Error fetching data:", error);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        res.json(results);
+        console.log(results);
+      }
+    );
+
+    db.end((err) => {
+      if (err) {
+        console.error("Error closing MySQL connection:", err);
+        return;
+      }
+      console.log("MySQL Connection Closed...");
+    });
+  });
+});
+
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
