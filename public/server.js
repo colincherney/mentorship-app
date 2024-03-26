@@ -314,7 +314,7 @@ app.get("/mentors", (req, res) => {
   });
 });
 
-// Create mentor/mentee plan (IN PROGRESS)
+// Create mentor/mentee plan (IN PROGRESS, need to send data in a way other than form)
 app.post("/mentorRequest", (req, res) => {
   const db = createConnection(); // Create a new database connection
 
