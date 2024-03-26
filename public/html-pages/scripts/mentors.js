@@ -1,5 +1,5 @@
-// Populate mentors page with all available mentors in mentor table
 
+// Populate mentors page with all available mentors in mentor table
 fetch(`/mentors`, {
     method: "GET",
     credentials: "same-origin",
@@ -45,6 +45,7 @@ fetch(`/mentors`, {
         const requestButton = document.createElement('button');
         requestButton.classList.add('request-button');
         requestButton.textContent = 'Request Mentor';
+        requestButton.value = mentor.mentor_id;
         mentorProfile.appendChild(requestButton);
 
         mentorContainer.appendChild(mentorProfile);
@@ -54,3 +55,6 @@ fetch(`/mentors`, {
       console.error("There was a problem with your fetch operation:", error);
     });
   
+// Create button function to send sql query to add mentor
+
+// Find some way to grab mentor and mentee id to insert into the fetch call

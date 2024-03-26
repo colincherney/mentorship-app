@@ -314,6 +314,47 @@ app.get("/mentors", (req, res) => {
   });
 });
 
+// Create mentor/mentee plan (IN PROGRESS)
+app.post("/mentorRequest", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    const {
+      mentor_id,
+      mentee_id,
+    } = req.body;
+
+    // Insert the form data into MySQL database
+    const sql =
+      "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
+    db.query(
+      sql,
+      [mentor_id, mentee_id],
+      (err, result) => {
+        if (err) {
+          console.error("Error inserting data:", err);
+          res.status(500).send("Error occurred while signing up");
+          return;
+        }
+        console.log("Data inserted successfully");
+        res.redirect(`index.html`);
+
+        db.end((err) => {
+          if (err) {
+            throw err;
+          }
+          console.log("MySQL Connection Closed...");
+        });
+      }
+    );
+  });
+});
+
 
 // Start server
 const port = process.env.PORT || 3000;
