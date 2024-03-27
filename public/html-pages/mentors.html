@@ -1,100 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MentorMe - Mentors</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        border: 20px solid #333;
-      }
-      #sidebar {
-        background-color: #333;
-        color: white;
-        width: 250px;
-        height: 100vh;
-      }
-      #content {
-        flex: 1;
-        padding: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid #555;
-      }
-      ul li:last-child {
-        border-bottom: none;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .mentor-profile {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-      }
-      .mentor-profile img {
-        max-width: 100px;
-        border-radius: 50%;
-      }
-        .mentor-profile {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .mentor-profile img {
-            max-width: 100px;
-            border-radius: 50%;
-        }
-        .request-button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .request-button:hover {
-            background-color: #45a049;
-        }
-      
-    </style>
-  </head>
-  <body>
-    <div id="sidebar">
-      <h2>MentorMe</h2>
-      <ul>
-        <li><a href="./homepage.html">Dashboard</a></li>
-        <li><a href="./mentors.html">Mentors</a></li>
-        <li><a href="./mentees.html">Mentees</a></li>
-        <li><a href="./messaging.html">Messaging</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li id="logout"><a href="#">Logout</a></li>
-      </ul>
-    </div>
-    <div id="content">
-      <h1>Mentors</h1>
-  <!-- Test mentor profiles
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MentorMe - Mentors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border: 20px solid #000;
+    }
+
+    #sidebar {
+      background-color: #000;
+      color: white;
+      width: 250px;
+      height: 200vh;
+      padding: 20px;
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-image: url('./pictures/download.jpeg');
+      background-size: cover;
+      /* Make the background image cover the entire container */
+      background-position: center;
+      /* Center the background image */
+      background-repeat: no-repeat;
+      /* Prevent the background image from repeating */
+      /* Other styles remain the same */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #555;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .mentor-profile {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .mentor-profile img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+
+    .mentor-profile {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .mentor-profile img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+
+    .request-button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .request-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar">
+    <h2>MentorMe</h2>
+    <ul>
+      <li><a href="./homepage.html">Dashboard</a></li>
+      <li><a href="./mentors.html">Mentors</a></li>
+      <li><a href="./mentees.html">Mentees</a></li>
+      <li><a href="./messaging.html">Messaging</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li id="logout"><a href="#">Logout</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <h1>Mentors</h1>
+    <!-- Test mentor profiles
       <div class="mentor-profile">
         <img src="./pictures/jin.jpg" alt="Mentor 1">
         <h2>Jin </h2>   
@@ -115,12 +143,13 @@
     </div>
   -->
 
-      <!-- Profiles pulled from db go here -->
+    <!-- Profiles pulled from db go here -->
     <div id="mentor-container">
 
     </div>
-    </div>
-    <script src="scripts/mentors.js"></script>
-    <script src="scripts/logout.js"></script>
-  </body>
+  </div>
+  <script src="scripts/mentors.js"></script>
+  <script src="scripts/logout.js"></script>
+</body>
+
 </html>
