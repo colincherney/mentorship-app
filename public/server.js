@@ -77,6 +77,18 @@ app.post("/login", (req, res) => {
   });
 });
 
+// Get mentor status route
+app.get('/mentor-status', (req, res) => {
+  const mentor_status = req.session.mentor_status
+
+  if (mentor_status === "mentor") {
+    res.send("mentor")
+  }
+  else {
+    res.send("mentee")
+  }
+});
+
 // Signup route
 app.post("/signup", (req, res) => {
   const db = createConnection(); // Create a new database connection
