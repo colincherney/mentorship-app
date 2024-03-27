@@ -1,107 +1,135 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Profile</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        border: 20px solid #333;
-      }
-      #sidebar {
-        background-color: #333;
-        color: white;
-        width: 250px;
-        height: 100vh;
-      }
-      #content {
-        flex: 1;
-        padding: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid #555;
-      }
-      ul li:last-child {
-        border-bottom: none;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .profile {
-        display: flex;
-        align-items: center;
-      }
-      .profile img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-right: 20px;
-      }
-      .profile h2 {
-        margin: 0;
-      }
-      #delete-button {
-        background-color: #f44336;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        position: absolute;
-        bottom: 0;
-      }
-      #edit {
-        background-color: #333;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        margin-left: 50px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="sidebar">
-      <h2>MentorMe</h2>
-      <ul>
-        <li><a href="./homepage.html">Dashboard</a></li>
-        <li><a href="./mentors.html">Mentors</a></li>
-        <li><a href="./mentees.html">Mentees</a></li>
-        <li><a href="./messaging.html">Messaging</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li id="logout"><a href="#">Logout</a></li>
-      </ul>
-    </div>
-    <div id="content">
-      <div class="profile">
-        <img src="https://via.placeholder.com/100" alt="Profile Picture" />
-        <div>
-          <h2 id="name"></h2>
-          <p id="email"></p>
-          <p id="location"></p>
-          <p id="job"></p>
-        </div>
-        <button id="edit"><a href="edit_profile.html">Edit Profile</a></button>
-      </div>
-      <h3>About Me</h3>
-      <p id="about"></p>
 
-      <button id="delete-button">Delete Account</button>
+<head>
+  <title>Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border: 20px solid #000;
+    }
+
+    #sidebar {
+      background-color: #000;
+      color: white;
+      width: 250px;
+      height: 200vh;
+      padding: 20px;
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-image: url('./pictures/download.jpeg');
+      background-size: cover;
+      /* Make the background image cover the entire container */
+      background-position: center;
+      /* Center the background image */
+      background-repeat: no-repeat;
+      /* Prevent the background image from repeating */
+      /* Other styles remain the same */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #555;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .profile h2 {
+      margin: 0;
+    }
+
+    #delete-button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+    }
+
+    #edit {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar">
+    <h2>MentorMe</h2>
+    <ul>
+      <li><a href="./homepage.html">Dashboard</a></li>
+      <li><a href="./mentors.html">Mentors</a></li>
+      <li><a href="./mentees.html">Mentees</a></li>
+      <li><a href="./messaging.html">Messaging</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li id="logout"><a href="#">Logout</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="profile">
+      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
+      <div>
+        <h2 id="name"></h2>
+        <p id="email"></p>
+        <p id="location"></p>
+        <p id="job"></p>
+      </div>
+      <button id="edit"><a href="edit_profile.html">Edit Profile</a></button>
     </div>
-    <script src="scripts/profile.js"></script>
-    <script src="scripts/logout.js"></script>
-    <script src="scripts/delete_account.js"></script>
-  </body>
+    <h3>About Me</h3>
+    <p id="about"></p>
+
+    <button id="delete-button">Delete Account</button>
+  </div>
+  <script src="scripts/profile.js"></script>
+  <script src="scripts/logout.js"></script>
+  <script src="scripts/delete_account.js"></script>
+</body>
+
 </html>
