@@ -125,37 +125,30 @@
                 <button type="submit">Send Message</button>
             </form>
         </div>
-
         <script>
-            document.getElementById("messageForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                const sendEmail = document.getElementById("sendEmail").value;
-                const subject = document.getElementById("subject").value;
+            document.getElementById("emailForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+    
+                const recipientEmail = document.getElementById("recipientEmail").value;
                 const message = document.getElementById("message").value;
-                sendMessage(sendEmail, subject, message);
-            });
-
-            function sendMessage(sendEmail, subject, message) {
-
-                fetch("/send-message", {
+    
+                // Send data to Express server
+                fetch("/send-email", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ sendEmail, subject, message })
+                    body: JSON.stringify({ recipientEmail, message })
                 })
-                .then(response => {
-                    if (response.ok) {
-                        alert("Message sent successfully!");
-                    } else {
-                        alert("Failed to send message.");
-                    }
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Show response from server
+                    // Clear form fields
+                    document.getElementById("recipientEmail").value = "";
+                    document.getElementById("message").value = "";
                 })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("Failed to send message.");
-                });
-            }
+                .catch(error => console.error("Error:", error));
+            });
         </script>
     </div>
 </body>

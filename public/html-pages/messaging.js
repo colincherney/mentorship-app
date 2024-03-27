@@ -1,42 +1,50 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
+const express = require('express');
+const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = 3000;
+app.use(express.json());
 
-// Middleware
-app.use(bodyParser.json());
+// Set up a Nodemailer transporter
+const transporter = nodemailer.createTransport({
+    service: 'Gmail', 
+    auth: {
+        user: 'MentorMe.cis440@gmail.com',
+        pass: 'MentorMe<3!'
+    }
+});
 
-// POST endpoint to send message
-app.post("/send-message", (req, res) => {
-    const { sendEmail, subject, message } = req.body;
+// Route to handle form submission and send email
+app.post('/send-email', (req, res) => {
+    const { recipientEmail, message } = req.body;
 
-    // Configure Nodemailer
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'mentorme.cis440@gmail.com',
-            pass: 'yvke ksxu raks lmds'
-        }
-    });
-
-    // Email message options
     const mailOptions = {
-        from: 'mentorme.cis440@gmail.com',
-        to: sendEmail,
-        subject: subject || 'Message from your mentor', // Use provided subject or default value
+        from: 'MentorMe.cis440@gmail.com',
+        to: recipientEmail,
+        subject: 'Message from Mentor',
         text: message
     };
 
-    // Send email
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error("Error:", error);
-            res.status(500).send("Failed to send message.");
+            console.error('Error sending email:', error);
+            res.status(500).send('Error sending email');
         } else {
-            console.log('Email sent: ' + info.response);
-            res.status(200).send("Message sent successfully!");
+            console.log('Email sent:', info.response);
+            res.send('Email sent successfully');
         }
     });
 });
+
+// Serve the HTML form
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+// <!-- creditials -->
+// <!-- EMAIL: MentorMe.cis440@gmail.com   PASSWORD: MentorMe<3! -->
