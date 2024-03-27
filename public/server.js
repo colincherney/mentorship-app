@@ -271,6 +271,91 @@ app.post("/update-data", (req, res) => {
   });
 });
 
+// Mentor page
+app.get("/mentors", (req, res) => {
+  const user_id = req.session.user_id; // Retrieve user_id from session
+
+  if (!user_id) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
+
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("MySQL Connected...");
+
+    db.query(
+      "SELECT * FROM P2_MENTOR",
+      [user_id],
+      (error, results) => {
+        if (error) {
+          console.error("Error fetching data:", error);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        res.json(results);
+        console.log(results);
+      }
+    );
+
+    db.end((err) => {
+      if (err) {
+        console.error("Error closing MySQL connection:", err);
+        return;
+      }
+      console.log("MySQL Connection Closed...");
+    });
+  });
+});
+
+// Create mentor/mentee plan (IN PROGRESS, need to send data in a way other than form)
+app.post("/mentorRequest", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    const {
+      mentor_id,
+      mentee_id,
+    } = req.body;
+
+    // Insert the form data into MySQL database
+    const sql =
+      "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
+    db.query(
+      sql,
+      [mentor_id, mentee_id],
+      (err, result) => {
+        if (err) {
+          console.error("Error inserting data:", err);
+          res.status(500).send("Error occurred while signing up");
+          return;
+        }
+        console.log("Data inserted successfully");
+        res.redirect(`index.html`);
+
+        db.end((err) => {
+          if (err) {
+            throw err;
+          }
+          console.log("MySQL Connection Closed...");
+        });
+      }
+    );
+  });
+});
+
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
