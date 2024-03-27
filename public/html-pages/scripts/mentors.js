@@ -44,7 +44,7 @@ fetch(`/mentors`, {
 
         const requestButton = document.createElement('button');
         requestButton.classList.add('request-button');
-        requestButton.textContent = 'Request Mentor';
+        requestButton.textContent = 'Add Mentor';
         requestButton.value = mentor.mentor_id;
         mentorProfile.appendChild(requestButton);
 
