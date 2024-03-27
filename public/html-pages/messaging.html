@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +11,32 @@
             margin: 0;
             padding: 0;
             display: flex;
-            border: 20px solid #333;
+            border: 20px solid #000;
         }
 
         #sidebar {
-            background-color: #333;
+            background-color: #000;
             color: white;
             width: 250px;
-            height: 100vh;
+            height: 200vh;
+            padding: 20px;
         }
 
         #content {
             flex: 1;
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-image: url('./pictures/download.jpeg');
+            background-size: cover;
+            /* Make the background image cover the entire container */
+            background-position: center;
+            /* Center the background image */
+            background-repeat: no-repeat;
+            /* Prevent the background image from repeating */
+            /* Other styles remain the same */
         }
 
         ul {
@@ -99,6 +113,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="sidebar">
         <h2>MentorMe</h2>
@@ -113,11 +128,14 @@
     </div>
     <div id="content">
         <h1>Messaging Page</h1>
-        <p>Welcome to the messaging platform where mentors and mentees can communicate with each other. Simply fill out the form below to send a message to your mentor/mentee.</p>
+        <p>Welcome to the messaging platform where mentors and mentees can communicate with each other. Simply fill out
+            the form below to send a message to your mentor/mentee.</p>
         <div id="messaging-container">
             <form id="messageForm">
                 <label for="recipientEmail">Mentee / Mentor Email:</label>
                 <input type="email" id="recipientEmail" name="recipientEmail" required>
+                <label for="yourEmail">Your Email</label>
+                <input type="email" id="yourEmail" name="yourEmail" required>
                 <label for="subject">Subject:</label>
                 <input type="text" id="subject" name="subject" required>
                 <label for="message">Message:</label>
@@ -126,33 +144,47 @@
             </form>
         </div>
         <script>
-document.getElementById("messageForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
 
-    const recipientEmail = document.getElementById("recipientEmail").value;
-    const message = document.getElementById("message").value;
 
-    // Send data to Express server
-    fetch("/send-email", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ recipientEmail, message })
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data); // Show response from server
-        // Clear form fields
-        document.getElementById("recipientEmail").value = "";
-        document.getElementById("message").value = "";
-    })
-    .catch(error => console.error("Error:", error));
-});
+
+
+
+
+
+            document.getElementById("messageForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                const recipientEmail = document.getElementById("recipientEmail").value;
+                const subject = document.getElementById("subject").value;
+                const message = "From: " + document.getElementById("yourEmail").value + "\n\n" + document.getElementById("message").value;
+                const yourEmail = document.getElementById("yourEmail").value;
+
+
+                // Send data to Express server
+                fetch("/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ recipientEmail, yourEmail, subject, message })
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        // Clear form fields
+                        document.getElementById("recipientEmail").value = "";
+                        document.getElementById("yourEmail").value = "";
+                        document.getElementById("message").value = "";
+                        document.getElementById("subject").value = "";
+
+                    })
+                    .catch(error => console.error("Error:", error));
+            });
 
         </script>
     </div>
 </body>
+
 </html>
 
 
