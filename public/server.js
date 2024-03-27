@@ -282,7 +282,7 @@ app.post("/send-email", (req, res) => {
     service: 'Gmail',
     auth: {
       user: 'MentorMe.cis440@gmail.com',
-      pass: 'MentorMe<3!'
+      pass: 'zqyq hthp btvx mdpy'
     }
   });
 
