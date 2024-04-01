@@ -1,3 +1,5 @@
+const mentee_id = '';
+
 
 // Populate mentors page with all available mentors in mentor table
 fetch(`/mentors`, {
@@ -55,6 +57,34 @@ fetch(`/mentors`, {
       console.error("There was a problem with your fetch operation:", error);
     });
   
+// Pull mentee table (IN PROGRESS, need to fix the req.session.user_id in here)
+fetch(`/mentees`, {
+  method: "GET",
+  credentials: "same-origin",
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log("Mentee Data: ", data)
+    const mentee_sess_id = '';
+    data.forEach(mentee => {
+    const user_id = req.session.user_id;
+
+    if (user_id == mentee.user_id){
+      mentee_sess_id = mentee.mentee_id;
+      console.log(mentee_sess_id);
+    }
+    })
+    
+    })
+  .catch((error) => {
+    console.error("There was a problem with your fetch operation:", error);
+  });
+
 // Create button function to send sql query to add mentor
 
 // Find some way to grab mentor and mentee id to insert into the fetch call
