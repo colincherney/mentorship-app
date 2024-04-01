@@ -11,6 +11,9 @@ fetch(`/user-data`, {
   .then((data) => {
     console.log("User Data:", data);
 
+    document.getElementById("pfp").src = 
+    data[0].pfp_url
+
     document.getElementById("name").innerText =
       data[0].first_name + " " + data[0].last_name;
 
