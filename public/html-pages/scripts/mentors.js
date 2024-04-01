@@ -19,6 +19,11 @@ fetch(`/mentors`, {
         const mentorProfile = document.createElement('div');
         mentorProfile.classList.add('mentor-profile');
 
+        const mentor_pfp = document.createElement('img');
+        mentor_pfp.src = mentor.pfp_url;
+        mentorProfile.appendChild(mentor_pfp);
+        console.log(mentor.pfp_url);
+
         const mentorName = document.createElement('h2');
         mentorName.textContent = mentor.first_name;
         mentorProfile.appendChild(mentorName);
