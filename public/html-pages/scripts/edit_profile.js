@@ -17,6 +17,7 @@ fetch(`/user-data`, {
     document.getElementById("phone").value = data[0].phone;
     document.getElementById("job_title").value = data[0].job_title;
     document.getElementById("location").value = data[0].location;
+    document.getElementById("pfp_url").value = data[0].pfp_url;
     document.getElementById("about").value = data[0].about;
   })
   .catch((error) => {

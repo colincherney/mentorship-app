@@ -107,15 +107,16 @@ app.post("/signup", (req, res) => {
       phone,
       job_title,
       location,
+      pfp_url,
       mentor_status,
     } = req.body;
 
     // Insert the form data into MySQL database
     const sql =
-      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title, location, mentor_mentee) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title, location, pfp_url, mentor_mentee) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     db.query(
       sql,
-      [first_name, last_name, email, password, phone, job_title, location, mentor_status],
+      [first_name, last_name, email, password, phone, job_title, location, pfp_url, mentor_status],
       (err, result) => {
         if (err) {
           console.error("Error inserting data:", err);
@@ -247,12 +248,12 @@ app.post("/update-data", (req, res) => {
 
     const user_id = req.session.user_id; // Retrieve user_id from session
 
-    const { first_name, last_name, email, phone, job_title, location, about } =
+    const { first_name, last_name, email, phone, job_title, location, pfp_url, about } =
       req.body;
 
     // Insert the form data into MySQL database
     const sql =
-      "UPDATE USERS_2 SET first_name = ?, last_name = ?, email = ?, phone = ?, job_title = ?, location = ?, about = ? WHERE user_id = ?";
+      "UPDATE USERS_2 SET first_name = ?, last_name = ?, email = ?, phone = ?, job_title = ?, location = ?, pfp_url = ?, about = ? WHERE user_id = ?";
     db.query(
       sql,
       [
@@ -262,6 +263,7 @@ app.post("/update-data", (req, res) => {
         phone,
         job_title,
         location,
+        pfp_url,
         about,
         user_id,
       ],
