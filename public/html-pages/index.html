@@ -12,6 +12,12 @@
       padding: 0;
       background-color: #f4f4f4;
       background-image: url('./pictures/Mentorship-Blogpost-1300x650.png');
+      background-repeat: no-repeat;
+      /* Prevent background image from repeating */
+      background-size: cover;
+      /* Scale the background image to cover the entire body */
+      min-height: 100vh;
+      position: relative;
     }
 
     .container {
@@ -53,7 +59,7 @@
       color: #fff;
       text-align: center;
       padding: 10px 0;
-      position: relative;
+      position: absolute;
       bottom: 0;
       width: 100%;
     }
@@ -79,10 +85,10 @@
       </p>
     </div>
   </div>
-  <div>
-</div>
+
+  <footer>
+    <p>&copy; 2024 MentorMe App. All rights reserved.</p>
+  </footer>
 </body>
-<footer>
-  <p>&copy; 2024 MentorMe App. All rights reserved.</p>
-</footer>
+
 </html>

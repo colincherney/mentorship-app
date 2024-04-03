@@ -380,20 +380,26 @@ app.get("/mentees", (req, res) => {
     }
     console.log("MySQL Connected...");
 
-    db.query(
-      "SELECT * FROM P2_MENTEE",
-      [user_id],
-      (error, results) => {
-        if (error) {
-          console.error("Error fetching data:", error);
-          res.status(500).send("Internal Server Error");
-          return;
-        }
-        res.json(results);
-        console.log(results);
-      }
-    );
+    let mentor_status = req.session.mentor_status
+    let user_id = req.session.user_id;
 
+    if (mentor_status == "mentee") {
+      db.query(
+        "SELECT * FROM P2_MENTEE WHERE user_id = ?",
+        [user_id],
+        (error, results) => {
+          if (error) {
+            console.error("Error fetching data:", error);
+            res.status(500).send("Internal Server Error");
+            return;
+          }
+          res.json(results);
+          console.log(results);
+        }
+      );
+    }
+    
+    
     db.end((err) => {
       if (err) {
         console.error("Error closing MySQL connection:", err);
