@@ -13,7 +13,7 @@ app.post("/send-email", (req, res) => {
   
     // Email configuration
     const mailOptions = {
-      from: 'MentorMe.cis440@gmail.com', 
+      from: 'MentorMe', 
       to: recipientEmail,
       subject: subject,
       text: message
