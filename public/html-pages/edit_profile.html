@@ -1,107 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
 
-    <title>Mentorship App Dashboard</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        border: 20px solid #333;
-      }
-      #sidebar {
-        background-color: #333;
-        color: white;
-        width: 250px;
-        height: 100vh;
-      }
-      #content {
-        flex: 1;
-        padding: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid #555;
-      }
-      ul li:last-child {
-        border-bottom: none;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      input {
-        margin-bottom: 10px;
-      }
-      #save {
-        background-color: #333;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 40px;
-        text-align: center;
-        font-size: 15px;
-      }
-      #back {
-        background-color: #333;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 40px;
-        text-align: center;
-        font-size: 15px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="sidebar">
-      <h2>MentorMe</h2>
-      <ul>
-        <li><a href="homepage.html">Dashboard</a></li>
-        <li><a href="#">Mentors</a></li>
-        <li><a href="#">Mentee Plan</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li id="logout"><a href="#">Logout</a></li>
-      </ul>
-    </div>
-    <div id="content">
-      <h1>Edit Profile</h1>
-      <form action="/update-data" method="post">
-        <label for="name">First Name:</label><br />
-        <input type="text" id="first_name" name="first_name" required /><br />
-        <label for="name">Last Name:</label><br />
-        <input type="text" id="last_name" name="last_name" required /><br />
-        <label for="email">Email:</label><br />
-        <input type="text" id="email" name="email" required /><br />
-        <label for="phone">Phone:</label><br />
-        <input type="text" id="phone" name="phone" required /><br />
-        <label for="location">Location:</label><br />
-        <input type="text" id="location" name="location" required /><br />
-        <label for="job_title">Job Title:</label><br />
-        <input type="text" id="job_title" name="job_title" required /><br />
-        <label for="about">About Me:</label><br />
-        <textarea id="about" name="about" rows="4" cols="50"></textarea><br />
-        <a id="back" href="profile.html">Back</a>
-        <button id="save">Save</button>
-      </form>
-    </div>
-    <script src="scripts/edit_profile.js"></script>
-    <script src="scripts/logout.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+  <title>Edit Profile</title>
+
+  <title>Mentorship App Dashboard</title>
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border: 20px solid #000;
+    }
+
+    #sidebar {
+      background-color: #000;
+      color: white;
+      width: 250px;
+      padding: 20px;
+      flex-grow: 0;
+      /* Do not grow */
+      flex-shrink: 0;
+      /* Do not shrink */
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    #content {
+      flex-grow: 1;
+      /* Grow to fill available space */
+      padding: 10px;
+      text-align: center;
+      background-image: url('./pictures/download.jpeg');
+      background-size: cover;
+      /* Make the background image cover the entire container */
+      background-position: center;
+      /* Center the background image */
+      background-repeat: no-repeat;
+      /* Prevent the background image from repeating */
+      overflow: hidden;
+      /* Add this to contain floated elements */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #555;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    #save,
+    #back {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar">
+    <h2>MentorMe</h2>
+    <ul>
+      <li><a href="homepage.html">Dashboard</a></li>
+      <li><a href="#">Mentors</a></li>
+      <li><a href="#">Mentee Plan</a></li>
+      <li><a href="#">Messages</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li id="logout"><a href="#">Logout</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <h1>Edit Profile</h1>
+    <form action="/update-data" method="post">
+      <label for="name">First Name:</label><br />
+      <input type="text" id="first_name" name="first_name" required /><br />
+      <label for="name">Last Name:</label><br />
+      <input type="text" id="last_name" name="last_name" required /><br />
+      <label for="email">Email:</label><br />
+      <input type="text" id="email" name="email" required /><br />
+      <label for="phone">Phone:</label><br />
+      <input type="text" id="phone" name="phone" required /><br />
+      <label for="location">Location:</label><br />
+      <input type="text" id="location" name="location" required /><br />
+      <label for="job_title">Job Title:</label><br />
+      <input type="text" id="job_title" name="job_title" required /><br />
+      <label for="about">About Me:</label><br />
+      <textarea id="about" name="about" rows="4" cols="50"></textarea><br />
+      <a id="back" href="profile.html">Back</a>
+      <button id="save">Save</button>
+    </form>
+  </div>
+  <script src="scripts/edit_profile.js"></script>
+  <script src="scripts/logout.js"></script>
+</body>
+
 </html>
