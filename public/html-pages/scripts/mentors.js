@@ -1,6 +1,5 @@
 const mentee_id = '';
 
-
 // Populate mentors page with all available mentors in mentor table
 fetch(`/mentors`, {
     method: "GET",
@@ -56,12 +55,53 @@ fetch(`/mentors`, {
         mentorProfile.appendChild(requestButton);
 
         mentorContainer.appendChild(mentorProfile);
-      })
-      })
-    .catch((error) => {
-      console.error("There was a problem with your fetch operation:", error);
-    });
+
+        const remindButton = document.createElement('button'); // Create Remind button
+        remindButton.classList.add('remind-button');
+        remindButton.textContent = 'Remind';
+        remindButton.value = mentor.mentor_id;
+        remindButton.addEventListener('click', () => {
+          sendRemindEmail(mentor.email);
+        });
+        mentorProfile.appendChild(remindButton); // Append Remind button
+
+        mentorContainer.appendChild(mentorProfile);
+      }) })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+      });
+      
+      function sendRemindEmail(mentorEmail) {
+        fetch('/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            recipientEmail: mentorEmail,
+            subject: 'Reminder from MentorMe',
+            message: 'Don\'t forget to check in on your mentee!'
+          })
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log('Email sent successfully:', data);
+          // Handle success, if needed
+        })
+        .catch(error => {
+          console.error('Error sending email:', error);
+          // Handle error, if needed
+        });
+      }
   
+        
+
+
 // Pull mentee table (IN PROGRESS, need to fix the req.session.user_id in here)
 fetch(`/mentees`, {
   method: "GET",
@@ -93,3 +133,4 @@ fetch(`/mentees`, {
 // Create button function to send sql query to add mentor
 
 // Find some way to grab mentor and mentee id to insert into the fetch call
+
