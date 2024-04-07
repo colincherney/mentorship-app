@@ -140,8 +140,7 @@ document.addEventListener("click", (event) => {
         return response.text();
       })
       .then((data) => {
-        console.log("Mentor added successfully:", data);
-        // Handle success, if needed
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error adding mentor:", error);

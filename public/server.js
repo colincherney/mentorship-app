@@ -445,7 +445,7 @@ app.post("/mentorRequest", (req, res) => {
         res.status(500).send("Error occurred while signing up");
         return;
       }
-      res.redirect(`profile.html`);
+      res.redirect(`mentee_progress.html`);
 
       db.end((err) => {
         if (err) {
