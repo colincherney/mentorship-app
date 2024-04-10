@@ -427,12 +427,25 @@ app.post("/mentorRequest", (req, res) => {
     } = req.body;
 
     // Insert the form data into MySQL database
+<<<<<<< HEAD
     const sql =
       "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
     db.query(
       sql,
       [mentor_id, mentee_id],
       (err, result) => {
+=======
+    const sql = "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
+    db.query(sql, [mentor_id, mentee_id], (err, result) => {
+      if (err) {
+        console.error("Error inserting data:", err);
+        res.status(500).send("Error occurred while signing up");
+        return;
+      }
+      res.redirect(`profile.html`);
+
+      db.end((err) => {
+>>>>>>> parent of 05925bf (Auto refreshes when you add mentor now)
         if (err) {
           console.error("Error inserting data:", err);
           res.status(500).send("Error occurred while signing up");

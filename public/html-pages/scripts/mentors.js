@@ -124,3 +124,36 @@ fetch(`/mentees`, {
 
 // Find some way to grab mentor and mentee id to insert into the fetch call
 
+<<<<<<< HEAD
+=======
+// Create button function to send sql query to add mentor to mentee
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("request-button")) {
+    const mentor_id = event.target.value;
+    console.log("Mentor ID: ", mentor_id);
+    fetch(`/mentorRequest`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        mentor_id: mentor_id,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.text();
+      })
+      .then((data) => {
+        console.log("Mentor added successfully:", data);
+        // Handle success, if needed
+      })
+      .catch((error) => {
+        console.error("Error adding mentor:", error);
+        // Handle error, if needed
+      });
+  }
+});
+>>>>>>> parent of 05925bf (Auto refreshes when you add mentor now)
