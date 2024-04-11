@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
   <title>MentorMe - Mentors</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Roboto, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -18,18 +20,17 @@
       background-color: #000;
       color: white;
       width: 250px;
-      height: 200vh;
-      padding: 20px;
-    }
+      height: 500vh;
+
 
     #content {
       flex: 1;
-      padding: 20px;
-      max-width: 1200px;
+      padding: 40px;
       margin: 0 auto;
       padding: 20px;
       text-align: center;
-      background-image: url('./pictures/download.jpeg');
+      background-image: url("./pictures/download.jpeg");
+
       background-size: cover;
       /* Make the background image cover the entire container */
       background-position: center;
@@ -88,7 +89,7 @@
     }
 
     .request-button {
-      background-color: #4CAF50;
+      background-color: #4caf50;
       /* Green */
       border: none;
       color: white;
@@ -100,7 +101,7 @@
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
-      margin-right: 10px; 
+      margin-right: 10px;
     }
 
     .request-button:hover {
@@ -108,7 +109,7 @@
     }
 
     .remind-button {
-      background-color: #4CAF50;
+      background-color: #4caf50;
       border: none;
       color: white;
       padding: 10px 20px;
@@ -125,8 +126,11 @@
       background-color: #45a049;
     }
 
-
-    
+    .disabled-button {
+      background-color: red;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -144,11 +148,10 @@
   </div>
   <div id="content">
     <h1>Mentors</h1>
-   
-    <!-- Profiles pulled from db go here -->
-    <div id="mentor-container">
 
-    </div>
+    <!-- Profiles pulled from db go here -->
+    <div id="mentor-container"></div>
+
   </div>
   <script src="scripts/mentors.js"></script>
   <script src="scripts/logout.js"></script>
