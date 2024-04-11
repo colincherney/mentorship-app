@@ -5,7 +5,8 @@ const session = require("express-session");
 
 const app = express();
 const path = require("path");
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
+
 
 // Database connection configuration
 const dbConfig = {
@@ -58,9 +59,9 @@ app.post("/login", (req, res) => {
 
       if (result.length > 0) {
         const user_id = result[0].user_id;
-        const mentor_status = result[0].mentor_mentee;
+        const mentor_status = result[0].mentor_mentee
         req.session.user_id = user_id; // Store user_id in session
-        req.session.mentor_status = mentor_status; // Store wheter mentor or mentee
+        req.session.mentor_status = mentor_status // Store wheter mentor or mentee
         res.redirect(`homepage.html`);
       } else {
         res.redirect(`login_error.html`);
@@ -77,13 +78,14 @@ app.post("/login", (req, res) => {
 });
 
 // Get mentor status route
-app.get("/mentor-status", (req, res) => {
-  const mentor_status = req.session.mentor_status;
+app.get('/mentor-status', (req, res) => {
+  const mentor_status = req.session.mentor_status
 
   if (mentor_status === "mentor") {
-    res.send("mentor");
-  } else {
-    res.send("mentee");
+    res.send("mentor")
+  }
+  else {
+    res.send("mentee")
   }
 });
 
@@ -105,26 +107,15 @@ app.post("/signup", (req, res) => {
       phone,
       job_title,
       location,
-      pfp_url,
       mentor_status,
     } = req.body;
 
     // Insert the form data into MySQL database
     const sql =
-      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title, location, pfp_url, mentor_mentee) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO USERS_2 (first_name, last_name, email, password, phone, job_title, location, mentor_mentee) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     db.query(
       sql,
-      [
-        first_name,
-        last_name,
-        email,
-        password,
-        phone,
-        job_title,
-        location,
-        pfp_url,
-        mentor_status,
-      ],
+      [first_name, last_name, email, password, phone, job_title, location, mentor_status],
       (err, result) => {
         if (err) {
           console.error("Error inserting data:", err);
@@ -256,20 +247,12 @@ app.post("/update-data", (req, res) => {
 
     const user_id = req.session.user_id; // Retrieve user_id from session
 
-    const {
-      first_name,
-      last_name,
-      email,
-      phone,
-      job_title,
-      location,
-      pfp_url,
-      about,
-    } = req.body;
+    const { first_name, last_name, email, phone, job_title, location, about } =
+      req.body;
 
     // Insert the form data into MySQL database
     const sql =
-      "UPDATE USERS_2 SET first_name = ?, last_name = ?, email = ?, phone = ?, job_title = ?, location = ?, pfp_url = ?, about = ? WHERE user_id = ?";
+      "UPDATE USERS_2 SET first_name = ?, last_name = ?, email = ?, phone = ?, job_title = ?, location = ?, about = ? WHERE user_id = ?";
     db.query(
       sql,
       [
@@ -279,7 +262,6 @@ app.post("/update-data", (req, res) => {
         phone,
         job_title,
         location,
-        pfp_url,
         about,
         user_id,
       ],
@@ -309,29 +291,29 @@ app.post("/send-email", (req, res) => {
 
   // Set up nodemailer transporter
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    service: 'Gmail',
     auth: {
-      user: "MentorMe.cis440@gmail.com",
-      pass: "zqyq hthp btvx mdpy",
-    },
+      user: 'MentorMe.cis440@gmail.com',
+      pass: 'zqyq hthp btvx mdpy'
+    }
   });
 
   // Email configuration
   const mailOptions = {
-    from: "MentorMe.cis440@gmail.com",
+    from: 'MentorMe.cis440@gmail.com', 
     to: recipientEmail,
     subject: subject,
-    text: message,
+    text: message
   };
 
   // Send email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send("Error sending email");
+      console.error('Error sending email:', error);
+      res.status(500).send('Error sending email');
     } else {
-      console.log("Email sent:", info.response);
-      res.send("Email sent successfully");
+      console.log('Email sent:', info.response);
+      res.send('Email sent successfully');
     }
   });
 });
@@ -355,15 +337,19 @@ app.get("/mentors", (req, res) => {
     }
     console.log("MySQL Connected...");
 
-    db.query("SELECT * FROM P2_MENTOR", [user_id], (error, results) => {
-      if (error) {
-        console.error("Error fetching data:", error);
-        res.status(500).send("Internal Server Error");
-        return;
+    db.query(
+      "SELECT * FROM P2_MENTOR",
+      [user_id],
+      (error, results) => {
+        if (error) {
+          console.error("Error fetching data:", error);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        res.json(results);
+        console.log(results);
       }
-      res.json(results);
-      console.log(results);
-    });
+    );
 
     db.end((err) => {
       if (err) {
@@ -394,7 +380,7 @@ app.get("/mentees", (req, res) => {
     }
     console.log("MySQL Connected...");
 
-    let mentor_status = req.session.mentor_status;
+    let mentor_status = req.session.mentor_status
     let user_id = req.session.user_id;
 
     if (mentor_status == "mentee") {
@@ -412,7 +398,8 @@ app.get("/mentees", (req, res) => {
         }
       );
     }
-
+    
+    
     db.end((err) => {
       if (err) {
         console.error("Error closing MySQL connection:", err);
@@ -423,7 +410,8 @@ app.get("/mentees", (req, res) => {
   });
 });
 
-// Create mentor/mentee plan
+
+// Create mentor/mentee plan (IN PROGRESS, need to send data in a way other than form)
 app.post("/mentorRequest", (req, res) => {
   const db = createConnection(); // Create a new database connection
 
@@ -433,11 +421,20 @@ app.post("/mentorRequest", (req, res) => {
     }
     console.log("MySQL Connected...");
 
-    // Retrieve mentor_id from the request body
-    const mentor_id = req.body.mentor_id;
-    const mentee_id = req.session.mentee_id;
+    const {
+      mentor_id,
+      mentee_id,
+    } = req.body;
 
     // Insert the form data into MySQL database
+<<<<<<< HEAD
+    const sql =
+      "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
+    db.query(
+      sql,
+      [mentor_id, mentee_id],
+      (err, result) => {
+=======
     const sql = "INSERT INTO P2_PLAN (mentor_id, mentee_id) VALUES (?, ?)";
     db.query(sql, [mentor_id, mentee_id], (err, result) => {
       if (err) {
@@ -445,61 +442,17 @@ app.post("/mentorRequest", (req, res) => {
         res.status(500).send("Error occurred while signing up");
         return;
       }
-      res.redirect(`mentee_progress.html`);
+      res.redirect(`profile.html`);
 
       db.end((err) => {
+>>>>>>> parent of 05925bf (Auto refreshes when you add mentor now)
         if (err) {
-          throw err;
-        }
-        console.log("MySQL Connection Closed...");
-      });
-    });
-  });
-});
-
-app.get("/checkMenteeInPlan", (req, res) => {
-  const db = createConnection(); // Create a new database connection
-
-  db.connect((err) => {
-    if (err) {
-      throw err;
-    }
-    console.log("MySQL Connected...");
-
-    const user_id = req.session.user_id; // Retrieve user_id from session
-
-    // Retrieve mentee id
-    const sql_mentee = "SELECT mentee_id FROM P2_MENTEE WHERE user_id = ?";
-    db.query(sql_mentee, [user_id], (err, result) => {
-      if (err) {
-        console.error("Error executing query:", err);
-        res.status(500).send("Error occurred while retrieving mentee_id");
-        return;
-      }
-
-      if (result.length === 0) {
-        console.error("No mentee_id found for user_id:", user_id);
-        res.status(404).send("Mentee not found");
-        return;
-      }
-
-      const mentee_id = result[0].mentee_id;
-      req.session.mentee_id = mentee_id;
-
-      // Check if mentee_id exists in P2_PLAN table
-      const sql = "SELECT * FROM P2_PLAN WHERE mentee_id = ?";
-      db.query(sql, [mentee_id], (err, result) => {
-        if (err) {
-          console.error("Error executing query:", err);
-          res.status(500).send("Error occurred while checking mentee in plan");
+          console.error("Error inserting data:", err);
+          res.status(500).send("Error occurred while signing up");
           return;
         }
-
-        if (result.length === 0) {
-          res.json({ exists: false });
-        } else {
-          res.json({ exists: true });
-        }
+        console.log("Data inserted successfully");
+        res.redirect(`index.html`);
 
         db.end((err) => {
           if (err) {
@@ -507,10 +460,12 @@ app.get("/checkMenteeInPlan", (req, res) => {
           }
           console.log("MySQL Connection Closed...");
         });
-      });
-    });
+      }
+    );
   });
 });
+
+
 
 // Start server
 const port = process.env.PORT || 3000;
