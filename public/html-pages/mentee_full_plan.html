@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentee Plan</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Mentorship App Dashboard</title>
+        <style>
+          body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            border: 20px solid #000;
+          }
+
+          #sidebar {
+            background-color: #000;
+            color: white;
+            width: 250px;
+            height: 200vh;
+            padding: 20px;
+          }
+
+          #content {
+            flex: 1;
+            padding: 40px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-image: url("./pictures/download.jpeg");
+            background-size: cover;
+            /* Make the background image cover the entire container */
+            background-position: center;
+            /* Center the background image */
+            background-repeat: no-repeat;
+            /* Prevent the background image from repeating */
+            /* Other styles remain the same */
+            width: 100px;
+          }
+
+          ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #555;
+          }
+
+          ul li:last-child {
+            border-bottom: none;
+          }
+
+          a {
+            color: white;
+            text-decoration: none;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+          /* CSS for aligning checkboxes and labels */
+          label {
+            display: inline-block;
+            width: 300px; /* Adjust the width as needed */
+            vertical-align: top;
+            margin-bottom: 50px;
+          }
+
+          input[type="checkbox"] {
+            display: inline-block;
+            vertical-align: top;
+          }
+          #save {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+          }
+
+          /* CSS for the link color */
+          #save:hover {
+            background-color: darkgreen;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+
+      <body>
+        <div id="sidebar">
+          <h2>MentorMe</h2>
+          <ul>
+            <li><a href="./homepage.html">Dashboard</a></li>
+            <li id="mentor"><a href="./mentors.html">Mentors</a></li>
+            <li><a href="./mentees.html">Mentee Plan</a></li>
+            <li><a href="./messaging.html">Messaging</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li id="logout"><a href="#">Logout</a></li>
+          </ul>
+        </div>
+        <div id="content">
+          <h1>My Mentee Plan</h1>
+
+          <label for="week1" style="font-weight: bold">Week 1:</label>
+          <input type="checkbox" id="week1" name="week1" value="false" />
+          <label for="week1"
+            >Introduction and goal setting: Discuss mentee's career aspirations,
+            strengths, and areas for growth. Set specific, measurable goals for
+            the mentorship period.</label
+          >
+          <br />
+          <label for="week2" style="font-weight: bold">Week 2:</label>
+          <input type="checkbox" id="week2" name="week2" value="false" />
+          <label for="week2"
+            >Resume and LinkedIn profile review: Mentor provides feedback on the
+            mentee's resume and LinkedIn profile, focusing on highlighting
+            relevant skills and experiences.</label
+          >
+          <br />
+          <label for="week3" style="font-weight: bold">Week 3:</label>
+          <input type="checkbox" id="week3" name="week3" value="false" />
+          <label for="week3"
+            >Networking strategies: Mentor shares tips for building professional
+            relationships, attending industry events, and utilizing social media
+            platforms for networking.</label
+          >
+          <br />
+          <label for="week4" style="font-weight: bold">Week 4:</label>
+          <input type="checkbox" id="week4" name="week4" value="false" />
+          <label for="week4"
+            >Communication skills: Discuss effective communication techniques,
+            including email etiquette, active listening, and public speaking.
+          </label>
+          <br />
+          <label for="week5" style="font-weight: bold">Week 5:</label>
+          <input type="checkbox" id="week5" name="week5" value="false" />
+          <label for="week5"
+            >Time management and productivity: Mentor provides strategies for
+            managing workload, setting priorities, and maintaining work-life
+            balance.
+          </label>
+          <br />
+          <label for="week6" style="font-weight: bold">Week 6:</label>
+          <input type="checkbox" id="week6" name="week6" value="false" />
+          <label for="week6"
+            >Performance feedback: Practice giving and receiving constructive
+            feedback. Discuss strategies for addressing feedback effectively in
+            the workplace.</label
+          >
+          <br />
+          <button id="save">Save Progress</button>
+        </div>
+      </body>
+    </html>
+    <script src="scripts/logout.js"></script>
+    <script src="scripts/mentor_status.js"></script>
+    <script src="scripts/mentee_full_plan.js"></script>
+  </body>
+</html>

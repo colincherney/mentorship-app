@@ -3,59 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+
     <title>Edit Profile</title>
 
     <title>Mentorship App Dashboard</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: Roboto, sans-serif;
         margin: 0;
         padding: 0;
         display: flex;
-        border: 20px solid #333;
+        border: 20px solid #000;
       }
+
       #sidebar {
-        background-color: #333;
+        background-color: #000;
         color: white;
         width: 250px;
-        height: 100vh;
+        padding: 20px;
+        flex-grow: 0;
+        /* Do not grow */
+        flex-shrink: 0;
+        /* Do not shrink */
       }
+
       #content {
         flex: 1;
         padding: 20px;
       }
+
+      #content {
+        flex-grow: 1;
+        /* Grow to fill available space */
+        padding: 10px;
+        text-align: center;
+        background-image: url("./pictures/download.jpeg");
+        background-size: cover;
+        /* Make the background image cover the entire container */
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        /* Prevent the background image from repeating */
+        overflow: hidden;
+        /* Add this to contain floated elements */
+      }
+
       ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
       }
+
       ul li {
         padding: 10px 0;
         border-bottom: 1px solid #555;
       }
+
       ul li:last-child {
         border-bottom: none;
       }
+
       a {
         color: white;
         text-decoration: none;
       }
+
       a:hover {
         text-decoration: underline;
       }
+
       input {
         margin-bottom: 10px;
       }
-      #save {
-        background-color: #333;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 40px;
-        text-align: center;
-        font-size: 15px;
-      }
+
+      #save,
       #back {
         background-color: #333;
         color: white;
@@ -68,6 +93,7 @@
       }
     </style>
   </head>
+
   <body>
     <div id="sidebar">
       <h2>MentorMe</h2>
@@ -93,6 +119,8 @@
         <input type="text" id="phone" name="phone" required /><br />
         <label for="location">Location:</label><br />
         <input type="text" id="location" name="location" required /><br />
+        <label for="pfp_url">Profile Picture URL:</label><br />
+        <input type="text" id="pfp_url" name="pfp_url" required /><br />
         <label for="job_title">Job Title:</label><br />
         <input type="text" id="job_title" name="job_title" required /><br />
         <label for="about">About Me:</label><br />
