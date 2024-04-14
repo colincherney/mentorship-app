@@ -79,6 +79,20 @@
             display: inline-block;
             vertical-align: top;
           }
+          #save {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+          }
+
+          /* CSS for the link color */
+          #save:hover {
+            background-color: darkgreen;
+            cursor: pointer;
+          }
         </style>
       </head>
 
@@ -143,10 +157,13 @@
             feedback. Discuss strategies for addressing feedback effectively in
             the workplace.</label
           >
+          <br />
+          <button id="save">Save Progress</button>
         </div>
       </body>
     </html>
     <script src="scripts/logout.js"></script>
     <script src="scripts/mentor_status.js"></script>
+    <script src="scripts/mentee_full_plan.js"></script>
   </body>
 </html>

@@ -559,6 +559,93 @@ app.get("/mentorName", (req, res) => {
   });
 });
 
+app.post("/saveProgress", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    // Retrieve the values of the checkboxes from the request body
+    const values = req.body.values;
+
+    // Assume you have a mentor_id and mentee_id stored in the session
+    const mentor_id = req.session.mentor_id;
+    const mentee_id = req.session.mentee_id;
+
+    // Update the P2_PLAN table with the checkbox values
+    const sql =
+      "UPDATE P2_PLAN SET week1_tf = ?, week2_tf = ?, week3_tf = ?, week4_tf = ?, week5_tf = ?, week6_tf = ? WHERE mentor_id = ? AND mentee_id = ?";
+    db.query(sql, [...values, mentor_id, mentee_id], (err, result) => {
+      if (err) {
+        console.error("Error updating progress:", err);
+        res.status(500).send("Error occurred while updating progress");
+        return;
+      }
+
+      res.status(200).send("Progress saved successfully");
+
+      db.end((err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("MySQL Connection Closed...");
+      });
+    });
+  });
+});
+
+app.get("/getProgress", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    // Assume you have a mentor_id and mentee_id stored in the session
+    const mentor_id = req.session.mentor_id;
+    const mentee_id = req.session.mentee_id;
+
+    // Retrieve the progress from the P2_PLAN table
+    const sql =
+      "SELECT week1_tf, week2_tf, week3_tf, week4_tf, week5_tf, week6_tf FROM P2_PLAN WHERE mentor_id = ? AND mentee_id = ?";
+    db.query(sql, [mentor_id, mentee_id], (err, result) => {
+      if (err) {
+        console.error("Error fetching progress:", err);
+        res.status(500).send("Error occurred while fetching progress");
+        return;
+      }
+
+      if (result.length === 0) {
+        res.status(404).send("Progress not found");
+        return;
+      }
+
+      const progress = [
+        result[0].week1_tf,
+        result[0].week2_tf,
+        result[0].week3_tf,
+        result[0].week4_tf,
+        result[0].week5_tf,
+        result[0].week6_tf,
+      ];
+
+      res.json({ progress: progress });
+
+      db.end((err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("MySQL Connection Closed...");
+      });
+    });
+  });
+});
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
