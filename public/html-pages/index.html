@@ -1,96 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+      body {
+        font-family: roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        background-image: url("./pictures/Mentorship-Blogpost-1300x650.png");
+        background-repeat: no-repeat;
+        /* Prevent background image from repeating */
+        background-size: cover;
+        /* Scale the background image to cover the entire body */
+        min-height: 100vh;
+        position: relative;
+      }
 
-  <style>
-    body {
-      font-family: roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      background-image: url('./pictures/Mentorship-Blogpost-1300x650.png');
-      background-repeat: no-repeat;
-      /* Prevent background image from repeating */
-      background-size: cover;
-      /* Scale the background image to cover the entire body */
-      min-height: 100vh;
-      position: relative;
-    }
+      .container {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-    .container {
-      width: 300px;
-      margin: 100px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
 
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-    input[type="submit"] {
-      width: 100%;
-      background-color: #4caf50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
 
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
 
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
-</head>
+  <body>
+    <div class="container">
+      <h2>Sign In</h2>
+      <form action="/login" method="post">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
 
-<body>
-  <div class="container">
-    <h2>Sign In</h2>
-    <form action="/login" method="post">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required />
-
-      <input type="submit" value="Sign In" />
-    </form>
-    <div class="signup-link">
-      <p>
-        Don't have an account?
-        <a href="signup_page.html">Sign Up</a>
-      </p>
+        <input type="submit" value="Sign In" />
+      </form>
+      <div class="signup-link">
+        <p>
+          Don't have an account?
+          <a href="signup_page.html">Sign Up</a>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <footer>
-    <p>&copy; 2024 MentorMe App. All rights reserved.</p>
-  </footer>
-</body>
-
+    <footer>
+      <p>&copy; 2024 MentorMe App. All rights reserved.</p>
+    </footer>
+  </body>
 </html>

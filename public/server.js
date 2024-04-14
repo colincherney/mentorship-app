@@ -498,7 +498,9 @@ app.get("/checkMenteeInPlan", (req, res) => {
         if (result.length === 0) {
           res.json({ exists: false });
         } else {
-          res.json({ exists: true });
+          const mentor_id = result[0].mentor_id;
+          req.session.mentor_id = mentor_id;
+          res.json({ exists: true, data: result });
         }
 
         db.end((err) => {
@@ -507,6 +509,51 @@ app.get("/checkMenteeInPlan", (req, res) => {
           }
           console.log("MySQL Connection Closed...");
         });
+      });
+    });
+  });
+});
+
+// Get mentor name
+app.get("/mentorName", (req, res) => {
+  const db = createConnection(); // Create a new database connection
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("MySQL Connected...");
+
+    // Retrieve mentor_id from the session
+    const mentor_id = req.session.mentor_id;
+
+    // Retrieve the first and last name of the mentor from the database
+    const sql =
+      "SELECT first_name, last_name FROM P2_MENTOR WHERE mentor_id = ?";
+    db.query(sql, [mentor_id], (err, result) => {
+      if (err) {
+        console.error("Error fetching mentor name:", err);
+        res.status(500).send("Error occurred while fetching mentor name");
+        return;
+      }
+
+      if (result.length === 0) {
+        res.status(404).send("Mentor not found");
+        return;
+      }
+
+      const mentorName = {
+        first_name: result[0].first_name,
+        last_name: result[0].last_name,
+      };
+
+      res.json(mentorName);
+
+      db.end((err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("MySQL Connection Closed...");
       });
     });
   });

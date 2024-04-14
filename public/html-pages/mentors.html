@@ -1,159 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>MentorMe - Mentors</title>
+    <style>
+      body {
+        font-family: Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        border: 20px solid #000;
+      }
 
-  <title>MentorMe - Mentors</title>
-  <style>
-    body {
-      font-family: Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      border: 20px solid #000;
-    }
+      #sidebar {
+        background-color: #000;
+        color: white;
+        width: 250px;
+        height: 500vh;
+        padding: 20px;
+      }
 
-    #sidebar {
-      background-color: #000;
-      color: white;
-      width: 250px;
-      height: 500vh;
-      padding: 20px;
-    }
+      #content {
+        flex: 1;
+        padding: 40px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background-image: url("./pictures/download.jpeg");
+        background-size: cover;
+        /* Make the background image cover the entire container */
+        background-position: center;
+        /* Center the background image */
+        background-repeat: no-repeat;
+        /* Prevent the background image from repeating */
+        /* Other styles remain the same */
+      }
 
-    #content {
-      flex: 1;
-      padding: 40px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-      background-image: url("./pictures/download.jpeg");
-      background-size: cover;
-      /* Make the background image cover the entire container */
-      background-position: center;
-      /* Center the background image */
-      background-repeat: no-repeat;
-      /* Prevent the background image from repeating */
-      /* Other styles remain the same */
-    }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+      ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #555;
+      }
 
-    ul li {
-      padding: 10px 0;
-      border-bottom: 1px solid #555;
-    }
+      ul li:last-child {
+        border-bottom: none;
+      }
 
-    ul li:last-child {
-      border-bottom: none;
-    }
+      a {
+        color: white;
+        text-decoration: none;
+      }
 
-    a {
-      color: white;
-      text-decoration: none;
-    }
+      a:hover {
+        text-decoration: underline;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
+      .mentor-profile {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
 
-    .mentor-profile {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+      .mentor-profile img {
+        max-width: 100px;
+        border-radius: 50%;
+      }
 
-    .mentor-profile img {
-      max-width: 100px;
-      border-radius: 50%;
-    }
+      .mentor-profile {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
 
-    .mentor-profile {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+      .mentor-profile img {
+        max-width: 100px;
+        border-radius: 50%;
+      }
 
-    .mentor-profile img {
-      max-width: 100px;
-      border-radius: 50%;
-    }
+      .request-button {
+        background-color: #4caf50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
 
-    .request-button {
-      background-color: #4caf50;
-      /* Green */
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
+      .request-button:hover {
+        background-color: #45a049;
+      }
 
-    .request-button:hover {
-      background-color: #45a049;
-    }
+      .remind-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
 
-    .remind-button {
-      background-color: #4caf50;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+      .remind-button:hover {
+        background-color: #45a049;
+      }
 
-    .remind-button:hover {
-      background-color: #45a049;
-    }
+      .disabled-button {
+        background-color: red;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    </style>
+  </head>
 
-    .disabled-button {
-      background-color: red;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-  </style>
-</head>
+  <body>
+    <div id="sidebar">
+      <h2>MentorMe</h2>
+      <ul>
+        <li><a href="./homepage.html">Dashboard</a></li>
+        <li><a href="./mentors.html">Mentors</a></li>
+        <li><a href="./mentees.html">Mentee Plan</a></li>
+        <li><a href="./messaging.html">Messaging</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li id="logout"><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <h1>Mentors</h1>
 
-<body>
-  <div id="sidebar">
-    <h2>MentorMe</h2>
-    <ul>
-      <li><a href="./homepage.html">Dashboard</a></li>
-      <li><a href="./mentors.html">Mentors</a></li>
-      <li><a href="./mentees.html">Mentee Plan</a></li>
-      <li><a href="./messaging.html">Messaging</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li id="logout"><a href="#">Logout</a></li>
-    </ul>
-  </div>
-  <div id="content">
-    <h1>Mentors</h1>
-
-    <!-- Profiles pulled from db go here -->
-    <div id="mentor-container"></div>
-  </div>
-  <script src="scripts/mentors.js"></script>
-  <script src="scripts/logout.js"></script>
-</body>
-
+      <!-- Profiles pulled from db go here -->
+      <div id="mentor-container"></div>
+    </div>
+    <script src="scripts/mentors.js"></script>
+    <script src="scripts/logout.js"></script>
+  </body>
 </html>
