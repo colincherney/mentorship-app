@@ -1,199 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MentorMe</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MentorMe</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        border: 20px solid #fff;
+        min-height: 100vh;
+      }
 
+      #sidebar {
+        background-color: #011638;
+        color: white;
+        width: 250px;
+        padding: 20px;
+        padding-top: 0px;
+        border-radius: 10px;
+      }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      border: 20px solid #fff;
-      min-height: 100vh;
-    }
+      #content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
 
-    #sidebar {
-      background-color: #011638;
-      color: white;
-      width: 250px;
-      padding: 20px;
-      padding-top: 0px;
-      border-radius: 10px;
-    }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    #content {
-      flex: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
+      ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #555;
+      }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+      ul li:last-child {
+        border-bottom: none;
+      }
 
-    ul li {
-      padding: 10px 0;
-      border-bottom: 1px solid #555;
-    }
+      a {
+        color: white;
+        text-decoration: none;
+      }
 
-    ul li:last-child {
-      border-bottom: none;
-    }
+      a:hover {
+        text-decoration: underline;
+      }
 
-    a {
-      color: white;
-      text-decoration: none;
-    }
+      .container {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
 
-    a:hover {
-      text-decoration: underline;
-    }
+        /* Limit width of the container */
+        height: 450px;
+        /* Adjust height as needed */
+        margin-bottom: 20px;
+        /* Add margin to create space between sections */
+      }
 
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
+      .moving-video {
+        position: absolute;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        /* Set the height to fill the container */
+        object-fit: cover;
+        z-index: -1;
+        /* Push the video below other content */
+        top: 0;
+        border-radius: 10px;
+      }
 
-      /* Limit width of the container */
-      height: 450px;
-      /* Adjust height as needed */
-      margin-bottom: 20px;
-      /* Add margin to create space between sections */
-    }
+      .text-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 1;
+        /* Keep text overlay above video */
+      }
 
-    .moving-video {
-      position: absolute;
-      width: 100%;
-      max-width: 100%;
-      height: 100%;
-      /* Set the height to fill the container */
-      object-fit: cover;
-      z-index: -1;
-      /* Push the video below other content */
-      top: 0;
-      border-radius: 10px;
+      .about,
+      .testimonial {
+        width: 100%;
+        max-width: 100%;
+        /* Set width to fill the container */
+        background-color: #2f538d5e;
+        /* Set background color */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        /* Add margin to create space between sections */
+        text-align: center;
+      }
 
-    }
+      .testimonial p {
+        font-style: italic;
+        color: #333;
+      }
 
-    .text-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      z-index: 1;
-      /* Keep text overlay above video */
-    }
+      .testimonial-author {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
+  </head>
 
-    .about,
-    .testimonial {
-      width: 100%;
-      max-width: 100%;
-      /* Set width to fill the container */
-      background-color: #2f538d5e;
-      /* Set background color */
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-      /* Add margin to create space between sections */
-      text-align: center;
-    }
-
-    .testimonial p {
-      font-style: italic;
-      color: #333;
-    }
-
-    .testimonial-author {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #555;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="sidebar">
-    <h2>MentorMe</h2>
-    <ul>
-      <li><a href="./homepage.html">Dashboard</a></li>
-      <li id="mentor"><a href="./mentors.html">Mentors</a></li>
-      <li><a href="./mentees.html">Mentee Plan</a></li>
-      <li><a href="./messaging.html">Messaging</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li id="logout"><a href="#">Logout</a></li>
-    </ul>
-  </div>
-  <div id="content">
-    <div class="container">
-      <div class="moving-video">
-        <video class="moving-video" autoplay muted loop playsinline>
-          <source src="./pictures/3251843-uhd_3840_2160_25fps.mp4" type="video/mp4">
-          Your browser does not support the video tag
-        </video>
-        <div class="text-overlay">
-          <h1>Welcome to MentorMe</h1>
-          <p>Connecting mentors and mentees for professional growth</p>
+  <body>
+    <div id="sidebar">
+      <h2>MentorMe</h2>
+      <ul>
+        <li><a href="./homepage.html">Dashboard</a></li>
+        <li id="mentor"><a href="./mentors.html">Mentors</a></li>
+        <li><a href="./mentees.html">Mentee Plan</a></li>
+        <li><a href="./messaging.html">Messaging</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li id="logout"><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <div class="container">
+        <div class="moving-video">
+          <video class="moving-video" autoplay muted loop playsinline>
+            <source
+              src="./pictures/3251843-uhd_3840_2160_25fps.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag
+          </video>
+          <div class="text-overlay">
+            <h1>Welcome to MentorMe</h1>
+            <p>Connecting mentors and mentees for professional growth</p>
+          </div>
         </div>
       </div>
-
+      <div class="about">
+        <h2>About MentorMe</h2>
+        <p>
+          MentorMe is a platform dedicated to fostering mentorship connections
+          between individuals from diverse backgrounds and expertise. Whether
+          you're a seasoned professional looking to share your knowledge or a
+          newcomer seeking guidance, MentorMe provides a supportive environment
+          for mentorship to thrive.
+        </p>
+        <p>
+          At MentorMe, we understand that mentorship is not just about sharing
+          knowledge; it's about building relationships, gaining insights, and
+          unlocking potential. That's why we've developed a
+          <b>comprehensive 12-week course</b> designed to provide structured
+          guidance and support. Each week, participants engage in interactive
+          modules, hands-on exercises, and one-on-one sessions with their
+          mentors, tailored to their unique needs and aspirations.
+        </p>
+        <p>
+          Whether you're a seasoned professional eager to share your expertise
+          or a newcomer hungry for guidance, MentorMe provides the support and
+          resources you need to succeed. Join us and take the next step in your
+          professional development journey!
+        </p>
+        <a href="mentors.html" class="btn">Get Started</a>
+      </div>
+      <div class="testimonial">
+        <p>
+          "MentorMe helped me find a mentor who provided invaluable guidance in
+          my career transition. Their 6 week plan helped me so much!"
+        </p>
+        <div class="testimonial-author">- Will Martin</div>
+      </div>
+      <div class="testimonial">
+        <p>
+          "As a mentor on MentorMe, I've had the privilege of helping mentees
+          achieve their goals and grow professionally. It's been a rewarding
+          experience."
+        </p>
+        <div class="testimonial-author">- Maddy Knutton</div>
+      </div>
     </div>
-    <div class="about">
-      <h2>About MentorMe</h2>
-      <p>
-        MentorMe is a platform dedicated to fostering mentorship connections
-        between individuals from diverse backgrounds and expertise. Whether
-        you're a seasoned professional looking to share your knowledge or a
-        newcomer seeking guidance, MentorMe provides a supportive environment
-        for mentorship to thrive.
-      </p>
-      <p>
-        At MentorMe, we understand that mentorship is not just about sharing
-        knowledge; it's about building relationships, gaining insights, and
-        unlocking potential. That's why we've developed a
-        <b>comprehensive 12-week course</b> designed to provide structured
-        guidance and support. Each week, participants engage in interactive
-        modules, hands-on exercises, and one-on-one sessions with their
-        mentors, tailored to their unique needs and aspirations.
-      </p>
-      <p>
-        Whether you're a seasoned professional eager to share your expertise
-        or a newcomer hungry for guidance, MentorMe provides the support and
-        resources you need to succeed. Join us and take the next step in your
-        professional development journey!
-      </p>
-      <a href="mentors.html" class="btn">Get Started</a>
-    </div>
-    <div class="testimonial">
-      <p>
-        "MentorMe helped me find a mentor who provided invaluable guidance in
-        my career transition. Their 12 week plan helped me so much!"
-      </p>
-      <div class="testimonial-author">- Will Martin</div>
-    </div>
-    <div class="testimonial">
-      <p>
-        "As a mentor on MentorMe, I've had the privilege of helping mentees
-        achieve their goals and grow professionally. It's been a rewarding
-        experience."
-      </p>
-      <div class="testimonial-author">- Maddy Knutton</div>
-    </div>
-
-  </div>
-  <script src="scripts/dashboard.js"></script>
-  <script src="scripts/logout.js"></script>
-  <script src="scripts/mentor_status.js"></script>
-</body>
-
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/logout.js"></script>
+    <script src="scripts/mentor_status.js"></script>
+  </body>
 </html>
