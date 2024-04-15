@@ -47,7 +47,7 @@ fetch("/mentor-status")
           } else {
             document.getElementById("content").innerHTML =
               "<h1>You Do Not Have a Mentor Yet</h1>" +
-              "<p>Click <a href='mentors.html'>here</a> to find a mentor</p>";
+              "<p>Click <a id='here' href='mentors.html'>here</a> to find a mentor</p>";
           }
         })
         .catch((error) => {
