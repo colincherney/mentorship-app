@@ -15,6 +15,8 @@
       padding: 0;
       display: flex;
       border: 20px solid #fff;
+      min-height: 100vh;
+
 
     }
 
@@ -61,7 +63,8 @@
     .container {
       position: relative;
       width: 100%;
-      max-width: 1075px;
+      max-width: 100%;
+
       /* Limit width of the container */
       height: 450px;
       /* Adjust height as needed */
@@ -72,12 +75,15 @@
     .moving-video {
       position: absolute;
       width: 100%;
+      max-width: 100%;
       height: 100%;
       /* Set the height to fill the container */
       object-fit: cover;
       z-index: -1;
       /* Push the video below other content */
       top: 0;
+      border-radius: 10px;
+
     }
 
     .text-overlay {
@@ -93,7 +99,8 @@
 
     .about,
     .testimonial {
-      width: 1050px;
+      width: 100%;
+      max-width: 100%;
       /* Set width to fill the container */
       background-color: #2f538d5e;
       /* Set background color */
@@ -132,7 +139,7 @@
   <div id="content">
     <div class="container">
       <div class="moving-video">
-        <video class="moving-video" autoplay muted loop>
+        <video class="moving-video" autoplay muted loop playsinline>
           <source src="./pictures/3251843-uhd_3840_2160_25fps.mp4" type="video/mp4">
           Your browser does not support the video tag
         </video>
