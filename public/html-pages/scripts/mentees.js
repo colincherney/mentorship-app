@@ -36,7 +36,7 @@ fetch("/mentor-status")
                   data.last_name +
                   "</h3>";
                 document.getElementById("content").innerHTML +=
-                  "<a href='mentee_full_plan.html'>View Full Plan</a> <br>";
+                  "<a id='button' href='mentee_full_plan.html'>View Full Plan</a> <br>";
               })
               .catch((error) => {
                 console.error(
